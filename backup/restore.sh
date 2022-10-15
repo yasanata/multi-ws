@@ -83,7 +83,7 @@ echo -e "$COLOR1┌────────────────────�
 red "│  [INFO] Data not found / you never backup"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • WWW.SSHSEDANG.MY.ID •                $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • WWW.YASANATA.MY.ID •                $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -138,7 +138,7 @@ sleep 1
 rm -f /root/backup/backup.zip &> /dev/null
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • WWW.SSHSEDANG.MY.ID •                $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • WWW.YASANATA.MY.ID •                $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
