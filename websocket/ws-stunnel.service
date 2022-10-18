@@ -1,5 +1,5 @@
 [Unit]
-Description=SSH Over Websocket Python By SSH SEDANG
+Description=SSH Over Websocket Python By YasaNata
 Documentation=https://sshsedang.my.id
 After=network.target nss-lookup.target
 
