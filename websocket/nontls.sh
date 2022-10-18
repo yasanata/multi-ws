@@ -16,7 +16,7 @@ red='\e[1;31m'
 green='\e[0;32m'
 yell='\e[1;33m'
 NC='\e[0m'
-echo "Installing SSH Websocket None TLS by SSH SEDANG NETWORK" | lolcat
+echo "Installing SSH Websocket None TLS by YasaNata" | lolcat
 echo "Progress..." | lolcat
 sleep 3
 
@@ -27,8 +27,8 @@ chmod +x /usr/local/bin/ws-nontls
 # Installing Service
 cat > /etc/systemd/system/ws-nontls.service << END
 [Unit]
-Description=Python Proxy Mod By SSNVPN
-Documentation=https://t.me/sshsedang
+Description=Python Proxy Mod By YasaNata
+Documentation=https://t.me/YasaNata
 After=network.target nss-lookup.target
 
 [Service]
