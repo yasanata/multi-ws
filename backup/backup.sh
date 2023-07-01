@@ -72,7 +72,7 @@ fi
 IP=$(curl -sS ipv4.icanhazip.com);
 date=$(date +"%Y-%m-%d")
 
-itoken=$(curl -sS https://raw.githubusercontent.com/SSHSEDANG4/update/main/asu)
+itoken=$(curl -sS https://raw.githubusercontent.com/yasanata/update/main/asu)
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 NameUser=$(curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini | grep $MYIP | awk '{print $2}')
@@ -111,7 +111,7 @@ zip -rP $InputPass $NameUser.zip backup > /dev/null 2>&1
 ##############++++++++++++++++++++++++#############
 LLatest=`date`
 Get_Data () {
-git clone https://github.com/SSHSEDANG4/backupuserssn.git /root/user-backup/ &> /dev/null
+git clone https://github.com/yasanata/backupuserssn.git /root/user-backup/ &> /dev/null
 }
 
 Mkdir_Data () {
@@ -138,8 +138,8 @@ Save_And_Exit () {
     git add . &> /dev/null
     git commit -m backup &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/SSHSEDANG4/backupuserssn
-    git push -f https://$itoken@github.com/SSHSEDANG4/backupuserssn.git &> /dev/null
+    git remote add origin https://github.com/yasanata/backupuserssn
+    git push -f https://$itoken@github.com/yasanata/backupuserssn.git &> /dev/null
 }
 
 if [ ! -d "/root/user-backup/" ]; then
@@ -154,7 +154,7 @@ sleep 1
 echo -e "$COLOR1│${NC}  [INFO] Processing updating server...... "
 Save_And_Exit
 fi
-link="https://raw.githubusercontent.com/SSHSEDANG4/backupuserssn/main/$NameUser/$NameUser.zip"
+link="https://raw.githubusercontent.com/yasanata/backupuserssn/main/$NameUser/$NameUser.zip"
 sleep 1
 echo -e "$COLOR1│${NC}  [INFO] Backup done "
 sleep 1
