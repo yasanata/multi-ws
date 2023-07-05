@@ -150,7 +150,6 @@ fi
 
 mesg n || true
 clear
-menu
 END
 chmod 644 /root/.profile
 
