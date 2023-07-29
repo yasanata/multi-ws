@@ -4,7 +4,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini > /root/tmp
+curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -15,12 +15,12 @@ BURIQ () {
     if [[ "$exp2" -le "0" ]]; then
     echo $user > /etc/.$user.ini
     else
-    rm -f  /etc/.$user.ini > /dev/null 2>&1
+    rm -f /etc/.$user.ini > /dev/null 2>&1
     fi
     done
-    rm -f  /root/tmp
+    rm -f /root/tmp
 }
-# https://raw.githubusercontent.com/yasanata/permission/main/ipmini 
+
 MYIP=$(curl -sS ipv4.icanhazip.com)
 Name=$(curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
