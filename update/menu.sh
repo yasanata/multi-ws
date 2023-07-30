@@ -180,8 +180,8 @@ echo -e "$COLOR1│$NC IP-VPS         : ${COLOR1}$IPVPS${NC}"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "                     List Menu                  "
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "  ${COLOR1}[01]${NC} • [${YELLOW}Menu${NC}] SSHWS     ${COLOR1}[07]${NC} • [${YELLOW}Menu${NC}] BACKUP    $COLOR1│$NC"
-echo -e "  ${COLOR1}[02]${NC} • [${YELLOW}Menu${NC}] VMESS     ${COLOR1}[08]${NC} • [${YELLOW}Menu${NC}] THEME     $COLOR1│$NC"
+echo -e "  ${COLOR1}[01]${NC} • [${YELLOW}Menu${NC}] SSHWS     ${COLOR1}[07]${NC} • [${YELLOW}Menu${NC}] THEME     $COLOR1│$NC"
+echo -e "  ${COLOR1}[02]${NC} • [${YELLOW}Menu${NC}] VMESS     ${COLOR1}[08]${NC} • [${YELLOW}Menu${NC}] BACKUP    $COLOR1│$NC"
 echo -e "  ${COLOR1}[03]${NC} • [${YELLOW}Menu${NC}] VLESS     ${COLOR1}[09]${NC} • [${YELLOW}Menu${NC}] SETTINGS  $COLOR1│$NC"  
 echo -e "  ${COLOR1}[04]${NC} • [${YELLOW}Menu${NC}] TROJAN    ${COLOR1}[10]${NC} • INFORMATION      $COLOR1│$NC"  
 echo -e "  ${COLOR1}[05]${NC} • [${YELLOW}Menu${NC}] SS WS     ${COLOR1}[11]${NC} • ADD HOST/DOMAIN  $COLOR1│$NC"
@@ -239,8 +239,8 @@ case $opt in
 04 | 4) clear ; menu-trojan ;;
 05 | 5) clear ; menu-ss ;;
 06 | 6) clear ; menu-dns ;;
-06 | 7) clear ; menu-backup ;;
-07 | 8) clear ; menu-theme ;;
+06 | 7) clear ; menu-theme ;;
+07 | 8) clear ; menu-backup ;;
 09 | 9) clear ; menu-set ;;
 10) clear ; info ;;
 11) clear ; add-host ;;
