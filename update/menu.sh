@@ -239,8 +239,8 @@ case $opt in
 04 | 4) clear ; menu-trojan ;;
 05 | 5) clear ; menu-ss ;;
 06 | 6) clear ; menu-dns ;;
-06 | 7) clear ; menu-theme ;;
-07 | 8) clear ; menu-backup ;;
+07 | 7) clear ; menu-theme ;;
+08 | 8) clear ; menu-backup ;;
 09 | 9) clear ; menu-set ;;
 10) clear ; info ;;
 11) clear ; add-host ;;
