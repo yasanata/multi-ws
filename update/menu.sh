@@ -11,7 +11,7 @@ export COLBG1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|se
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
 uram=$( free -h | awk 'NR==2 {print $3}' )
-ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10, )
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
 CITY=$(curl -s ipinfo.io/city )
 
 
