@@ -11,8 +11,8 @@ export COLBG1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|se
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
 uram=$( free -h | awk 'NR==2 {print $3}' )
-ISP=$(cat /root/.myisp | cut -d " " -f 3-9 )
-CITY=$(cat /root/.mycity )
+ISP=$(cat /root/.myisp | cut -d ' ' -f 3-9)
+CITY=$(cat /root/.mycity)
 
 
 BURIQ () {
