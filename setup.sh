@@ -261,6 +261,8 @@ wget https://raw.githubusercontent.com/yasanata/multi-ws/main/websocket/insshws.
 clear
 wget https://raw.githubusercontent.com/yasanata/multi-ws/main/websocket/nontls.sh && chmod +x nontls.sh && ./nontls.sh
 clear
+wget https://raw.githubusercontent.com/yasanata/multi-ws/main/slowdnss/install-sldns.sh && chmod +x install-sldns.sh && ./install-sldns.sh
+clear
 echo -e "$green[INFO]$NC Download Extra Menu"
 sleep 2
 wget https://raw.githubusercontent.com/yasanata/multi-ws/main/update/update.sh && chmod +x update.sh && ./update.sh
