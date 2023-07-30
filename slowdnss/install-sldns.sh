@@ -22,10 +22,6 @@ sleep 3
 #wget https://zxvpn.my.id/website/sshonly/slowdnss/slowdnss/hostdnss.sh && chmod +x hostdnss.sh &&  sed -i -e 's/\r$//' hostdnss.sh && ./hostdnss.sh
 nameserver=$(cat /root/nsdomain)
 
-# SSH SlowDNS
-wget -qO- -O /etc/ssh/sshd_config https://zxvpn.my.id/website/sshonly/slowdnss/sshd_config
-systemctl restart sshd
-
 apt install screen -y
 apt install cron -y
 apt install iptables -y
