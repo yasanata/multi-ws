@@ -228,7 +228,7 @@ else
 fi;
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}               • WWW.YASANATA.NINJA •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}             • WWW.YASANATA.NINJA •            ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 echo -ne " Select menu : "; read opt
