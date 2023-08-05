@@ -11,17 +11,17 @@ gem install lolcat
 
 # install udp-custom
 echo downloading udp-custom
-wget "https://github.com/SSHSEDANG4/multiws/raw/main/udpcustom/udp-custom-linux-amd64" -O /etc/udpp/udp-custom
+wget "https://github.com/yasanata/multi-ws/raw/main/udpcustom/udp-custom-linux-amd64" -O /etc/udpp/udp-custom
 chmod +x /etc/udpp/udp-custom
 
 echo downloading default config
-wget "https://raw.githubusercontent.com/SSHSEDANG4/multiws/main/udpcustom/config.json" -O /etc/udpp/config.json
+wget "https://raw.githubusercontent.com/yasanata/multi-ws/main/udpcustom/config.json" -O /etc/udpp/config.json
 chmod 644 /etc/udpp/config.json
 
 if [ -z "$1" ]; then
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
-Description=udp-custom by Ronggolawe86
+Description=udp-custom by YasaNata
 
 [Service]
 User=root
@@ -37,7 +37,7 @@ EOF
 else
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
-Description=udp-custom by JAGOANNEON
+Description=udp-custom by YasaNata
 
 [Service]
 User=root
@@ -68,15 +68,13 @@ clear
 echo " "
 echo "==========SCRIPT UDP SUKSES TERINSTAL==========="
 echo " "
-echo "=================-SCRIPT BY JAGOANNEON-==============" | tee -a log-install.txt
+echo "=================-SCRIPT BY YASANATA-==============" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
 echo "----------------------------------------------" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
-echo "   - Dev/Main           : RONGGOLAWE86" | tee -a log-install.txt
-echo "   - Telegram           : t.me/ronggolawe1986" | tee -a log-install.txt
-echo "   - Whatsapp           : https://wa.me/6283857684916" | tee -a log-install.txt
-echo "   - Facebook           : https://fb.com/generasironggolawetuban" | tee -a log-install.txt
-echo "--------Script Created By JAGOANNEON------" | tee -a log-install.txt
+echo "   - Dev/Main           : YasaNata" | tee -a log-install.txt
+echo "   - Telegram           : t.me/yasanata" | tee -a log-install.txt
+echo "--------Script Created By YasaNata------" | tee -a log-install.txt
 echo ""
 echo "========SUKSES MENGINSTALL UDP-CUSTOM========"
 echo "===============KETIK MENU-UDP================"
