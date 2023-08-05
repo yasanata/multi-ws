@@ -263,6 +263,8 @@ wget https://raw.githubusercontent.com/yasanata/multi-ws/main/websocket/nontls.s
 clear
 wget https://raw.githubusercontent.com/yasanata/multi-ws/main/slowdnss/install-sldns.sh && chmod +x install-sldns.sh && ./install-sldns.sh
 clear
+wget https://raw.githubusercontent.com/yasanata/multi-ws/main/udpcustom/udp-tunnel.sh && chmod +x udp-tunnel.sh && ./udp-tunnel.sh
+clear
 echo -e "$green[INFO]$NC Download Extra Menu"
 sleep 2
 wget https://raw.githubusercontent.com/yasanata/multi-ws/main/update/update.sh && chmod +x update.sh && ./update.sh
