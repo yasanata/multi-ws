@@ -1,184 +1,70 @@
 #!/bin/bash
-dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-###########- COLOR CODE -##############
-colornow=$(cat /etc/ssnvpn/theme/color.conf)
-NC="\e[0m"
-RED="\033[0;31m" 
-COLOR1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
-###########- END COLOR CODE -##########
-
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f /root/tmp
-}
-
-MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
-    fi
-else
-res="Permission Accepted..."
-fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
-if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
-exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-echo -ne
-else
-red "Permission Denied!"
-exit 0
-fi
-
-IP=$(curl -sS ipv4.icanhazip.com);
-date=$(date +"%Y-%m-%d")
-
-itoken=$(curl -sS https://raw.githubusercontent.com/yasanata/update/main/asu)
-
-MYIP=$(curl -sS ipv4.icanhazip.com)
-NameUser=$(curl -sS https://raw.githubusercontent.com/yasanata/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-
-
+# My Telegram : https://t.me/YasaNata
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+# ==========================================
+# Getting
 clear
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}             • BACKUP PANEL MENU •             ${NC} $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}  [INFO] Create password for database"
-read -rp "   [INFO] Enter password : " -e InputPass
-sleep 1
-if [[ -z $InputPass ]]; then
-exit 0
+IP=$(wget -qO- ipinfo.io/ip);
+date=$(date +"%Y-%m-%d")
+clear
+email=$(cat /home/email)
+if [[ "$email" = "" ]]; then
+echo "Enter Email To Receive Backup"
+read -rp "Email : " -e email
+cat <<EOF>>/home/email
+$email
+EOF
 fi
-echo -e "$COLOR1│${NC}  [INFO] Processing... "
-mkdir -p /root/backup
-sleep 1
-
-cp -r /root/.acme.sh /root/backup/ &> /dev/null
-cp /etc/passwd /root/backup/ &> /dev/null
-cp /etc/group /root/backup/ &> /dev/null
-cp /etc/shadow /root/backup/ &> /dev/null
-cp /etc/gshadow /root/backup/ &> /dev/null
-cp /etc/ppp/chap-secrets /root/backup/chap-secrets &> /dev/null
-cp /etc/ipsec.d/passwd /root/backup/passwd1 &> /dev/null
-cp -r /var/lib/ssnvpn-pro/ /root/backup/ssnvpn-pro &> /dev/null
-cp -r /etc/xray /root/backup/xray &> /dev/null
-cp -r /home/vps/public_html /root/backup/public_html &> /dev/null
-cp -r /etc/cron.d /root/backup/cron.d &> /dev/null
-cp /etc/crontab /root/backup/crontab &> /dev/null
+clear
+echo "Please Wait, Backup Process is in progress !!"
+rm -rf /root/backup
+mkdir /root/backup
+cp /etc/passwd backup/
+cp /etc/group backup/
+cp /etc/shadow backup/
+cp /etc/gshadow backup/
+cp -r /etc/wireguard backup/wireguard
+cp /etc/ppp/chap-secrets backup/chap-secrets
+cp /etc/ipsec.d/passwd backup/passwd1
+cp /etc/shadowsocks-libev/akun.conf backup/ss.conf
+cp -r /var/lib/akbarstorevpn/ backup/akbarstorevpn
+cp -r /home/sstp backup/sstp
+cp -r /etc/xray backup/xray
+cp -r /etc/trojan-go backup/trojan-go
+cp -r /usr/local/shadowsocksr/ backup/shadowsocksr
+cp -r /home/vps/public_html backup/public_html
 cd /root
-zip -rP $InputPass $NameUser.zip backup > /dev/null 2>&1
-
-##############++++++++++++++++++++++++#############
-LLatest=`date`
-Get_Data () {
-git clone https://github.com/yasanata/backupuserssn.git /root/user-backup/ &> /dev/null
-}
-
-Mkdir_Data () {
-mkdir -p /root/user-backup/$NameUser
-}
-
-Input_Data_Append () {
-if [ ! -f "/root/user-backup/$NameUser/$NameUser-last-backup" ]; then
-touch /root/user-backup/$NameUser/$NameUser-last-backup
-fi
-echo -e "User         : $NameUser
-last-backup : $LLatest
-" >> /root/user-backup/$NameUser/$NameUser-last-backup
-mv /root/$NameUser.zip /root/user-backup/$NameUser/
-}
-
-Save_And_Exit () {
-    DATE=$(date +'%d %B %Y')
-    cd /root/user-backup
-    git config --global user.email "yasanata@gmail.com" &> /dev/null
-    git config --global user.name "yasanata" &> /dev/null
-    rm -rf .git &> /dev/null
-    git init &> /dev/null
-    git add . &> /dev/null
-    git commit -m backup &> /dev/null
-    git branch -M main &> /dev/null
-    git remote add origin https://github.com/yasanata/backupuserssn
-    git push -f https://$itoken@github.com/yasanata/backupuserssn.git &> /dev/null
-}
-
-if [ ! -d "/root/user-backup/" ]; then
-sleep 1
-echo -e "$COLOR1│${NC}  [INFO] Getting database... "
-Get_Data
-Mkdir_Data
-sleep 1
-echo -e "$COLOR1│${NC}  [INFO] Getting info server... "
-Input_Data_Append
-sleep 1
-echo -e "$COLOR1│${NC}  [INFO] Processing updating server...... "
-Save_And_Exit
-fi
-link="https://raw.githubusercontent.com/yasanata/backupuserssn/main/$NameUser/$NameUser.zip"
-sleep 1
-echo -e "$COLOR1│${NC}  [INFO] Backup done "
-sleep 1
-echo
-sleep 1
-echo -e "$COLOR1│${NC}  [INFO] Generete Link Backup "
-echo -e "$COLOR1│${NC}"
-sleep 2
-echo -e "$COLOR1│${NC}  The following is a link to your vps data backup file.
-$COLOR1│${NC}  Your VPS IP $IP
-$COLOR1│${NC}
-$COLOR1│${NC}  $link
-$COLOR1│${NC}  save the link pliss!
-$COLOR1│${NC}
-$COLOR1│${NC}  If you want to restore data, please enter the link above.
-$COLOR1│${NC}  Thank You For Using Our Services"
-cd
-rm -rf /root/backup &> /dev/null
-rm -rf /root/user-backup &> /dev/null
-rm -f /root/$NameUser.zip &> /dev/null
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
-echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • WWW.YASANATA.NINJA •                $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
-echo
-read -n 1 -s -r -p "   Press any key to back on menu"
-menu-backup
+zip -r $IP-$date.zip backup > /dev/null 2>&1
+rclone copy /root/$IP-$date.zip dr:backup/
+url=$(rclone link dr:backup/$IP-$date.zip)
+id=(`echo $url | grep '^https' | cut -d'=' -f2`)
+link="https://drive.google.com/u/4/uc?id=${id}&export=download"
+echo -e "
+Detail Backup 
+==================================
+IP VPS        : $IP
+Link Backup   : $link
+Date          : $date
+==================================
+" | mail -s "Backup Data" $email
+rm -rf /root/backup
+rm -r /root/$IP-$date.zip
+clear
+echo -e "
+Detail Backup 
+==================================
+IP VPS        : $IP
+Link Backup   : $link
+Date          : $date
+==================================
+"
+echo "Please check Inbox $email"
