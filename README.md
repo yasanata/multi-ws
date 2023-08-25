@@ -1,5 +1,5 @@
 # TESTED
-✅ Debian 10 & 11
+✅ Debian 10
 
 # SEBELUM INSTALL
 UPDATE UNTUK DEBIAN
