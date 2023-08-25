@@ -111,26 +111,26 @@ zip -rP $InputPass $NameUser.zip backup > /dev/null 2>&1
 ##############++++++++++++++++++++++++#############
 LLatest=`date`
 Get_Data () {
-git clone https://github.com/yasanata/backupuserssn.git /root/user-backup/ &> /dev/null
+git clone https://github.com/yasanata/backupuserssn.git /root/userbackup/ &> /dev/null
 }
 
 Mkdir_Data () {
-mkdir -p /root/user-backup/$NameUser
+mkdir -p /root/userbackup/$NameUser
 }
 
 Input_Data_Append () {
-if [ ! -f "/root/user-backup/$NameUser/$NameUser-last-backup" ]; then
-touch /root/user-backup/$NameUser/$NameUser-last-backup
+if [ ! -f "/root/userbackup/$NameUser/$NameUser-last-backup" ]; then
+touch /root/userbackup/$NameUser/$NameUser-last-backup
 fi
 echo -e "User         : $NameUser
 last-backup : $LLatest
-" >> /root/user-backup/$NameUser/$NameUser-last-backup
-mv /root/$NameUser.zip /root/user-backup/$NameUser/
+" >> /root/userbackup/$NameUser/$NameUser-last-backup
+mv /root/$NameUser.zip /root/userbackup/$NameUser/
 }
 
 Save_And_Exit () {
     DATE=$(date +'%d %B %Y')
-    cd /root/user-backup
+    cd /root/userbackup
     git config --global user.email "yasanata@gmail.com" &> /dev/null
     git config --global user.name "yasanata" &> /dev/null
     rm -rf .git &> /dev/null
@@ -142,7 +142,7 @@ Save_And_Exit () {
     git push -f https://$itoken@github.com/yasanata/backupuserssn.git &> /dev/null
 }
 
-if [ ! -d "/root/user-backup/" ]; then
+if [ ! -d "/root/userbackup/" ]; then
 sleep 1
 echo -e "$COLOR1│${NC}  [INFO] Getting database... "
 Get_Data
@@ -173,7 +173,7 @@ $COLOR1│${NC}  If you want to restore data, please enter the link above.
 $COLOR1│${NC}  Thank You For Using Our Services"
 cd
 rm -rf /root/backup &> /dev/null
-rm -rf /root/user-backup &> /dev/null
+rm -rf /root/userbackup &> /dev/null
 rm -f /root/$NameUser.zip &> /dev/null
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
